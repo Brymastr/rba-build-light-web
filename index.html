@@ -3,14 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body ng-app="app">
 
   <ng-view></ng-view>
 
-  <script src="libs/angular/angular.min.js"></script>
+  <script src="libs/angular/angular.js"></script>
   <script src="libs/angular-route/angular-route.min.js"></script>
+  <script src="libs/jquery/dist/jquery.min.js"></script>
   <script src="app.js"></script>
   <script src="controllers/homeController.js"></script>
+  <script src="controllers/lightsController.js"></script>
+  <script src="controllers/projectsController.js"></script>
+  <script src="actions/actions.js"></script>
 </body>
 </html>

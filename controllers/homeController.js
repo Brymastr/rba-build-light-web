@@ -6,7 +6,7 @@ app.controller('HomeController', function($scope, $location, $timeout) {
     $('#' + path).css('width', '100%');
     $timeout(function() {
       console.log(path);
-      $location.path('/' + path).replace();
+      $location.path(path);
     }, 500);
   }
 });

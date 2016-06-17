@@ -1,15 +1,19 @@
-app.controller('SingleLightController', function($scope, $routeParams, $http) {
-  const url = 'http://localhost:9001/api'
+app.controller('SingleLightController', function($scope, $routeParams, $http, $timeout) {
+  const url = 'http://localhost:9001/api';
+
+  $('.half-page').css('width', '0%');
+  $('#light-projects').css('width', '100%');
+  $timeout(function() {
+    $('.half-page').css('width', '50%');
+    $('.half-page').css('width', '');
+  }, 0);
 
   $scope.light;
   $scope.projects;
 
   $scope.selectProject = function(index) {
-    if($scope.projects[index].selected)
-      $scope.projects[index].selected = false;
-    else
-      $scope.projects[index].selected = true;
-  }
+    $scope.projects[index].selected = !$scope.projects[index].selected;
+  };
 
   $scope.updateLight = function() {
 
@@ -25,7 +29,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http) {
       name: $scope.light.name,
       ip: $scope.light.ip,
       projects: projectsToSave
-    }
+    };
     $http.patch(url + '/lights/' + $routeParams.id, data, null).then(
       function(response) {
         console.log('light updated');
@@ -34,7 +38,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http) {
         console.log('error');
       }
     );
-  }
+  };
 
   $scope.fetchProjects = function() {
     $scope.projects = [];
@@ -49,7 +53,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http) {
         console.log('error');
       }
     );
-  }
+  };
   
 
   $scope.fetchLight = function() {
@@ -64,7 +68,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http) {
         console.log('error');
       }
     );
-  }
+  };
   $scope.fetchLight();
 
 });

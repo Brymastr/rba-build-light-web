@@ -1,6 +1,13 @@
-app.controller('LightsController', function($scope, $http) {
+app.controller('LightsController', function($scope, $http, $timeout) {
   $scope.lights = "Lights controller";
   const url = 'http://localhost:9001/api/lights'
+
+  $('.half-page').css('width', '0%');
+  $('#light-list').css('width', '100%');
+  $timeout(function() {
+    $('.half-page').css('width', '50%');
+    $('.half-page').css('width', '');
+  }, 0);
   
   $scope.newLightName;
   $scope.newLightIp;
@@ -25,11 +32,11 @@ app.controller('LightsController', function($scope, $http) {
     $http.get(url, null).then(
       function(response) {
         $scope.lights = response.data;
-        console.log(response.data);
       },
       function(response) {
         console.log('error');
       }
     );
   }
+  $scope.fetchList();
 });

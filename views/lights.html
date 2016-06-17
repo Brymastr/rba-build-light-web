@@ -1,17 +1,17 @@
 <div class="container flex">
-  <div id="new-light" class="flex flex-center">
-    <div>
+  <div id="new-light" class="flex flex-center light-background half-page">
+    <div id="new-light-form" class="flex flex-vertical">
       <h2>new light</h2>
       <input type="text" placeholder="name" ng-model="newLightName">
       <input type="text" placeholder="ip" ng-model="newLightIp">
-      <button type="submit" ng-click="createLight()">create</button>
+      <button class="btn-dark" type="submit" ng-click="createLight()">create</button>
     </div>
   </div>
-  <div id="light-list" class="flex flex-center">
+  <div id="light-list" class="flex flex-center dark-background half-page">
     <div>
       <h2>lights list</h2>
       <select ng-model="lightsList" ng-options="light as light.name for light in lights track by light._id"></select>
-      <button ng-click="fetchList()">Refresh</button>
+      <button class="btn-light" ng-click="fetchList()">refresh</button>
     </div>
   </div>
 </div>

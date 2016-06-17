@@ -1,14 +1,24 @@
 <div class="container flex">
-  <div id="light-details" class="flex flex-center light-background half-page">
+  <div id="light-details" class="flex flex-center dark-background half-page">
     <div id="light-details-form" class="flex flex-vertical">
-      <input type="text" ng-model="light.name" style="font-size: 3vw;">
-      <input type="text" ng-model="light.ip" style="font-size: 2vw;">
-      <button class="btn-dark" type="submit" ng-click="updateLight()">save</button>
+      <input class="input-light" type="text" ng-model="light.name" style="font-size: 3vw;">
+      <input class="input-light" type="text" ng-model="light.ip" style="font-size: 2vw;">
+      <button class="btn-light" type="submit" ng-click="updateLight()">save</button>
     </div>
   </div>
-  <div id="light-project-list" class="flex flex-center dark-background half-page">
-    <div class="flex flex-vertical">
+  <div id="light-projects" class="flex flex-center light-background half-page">
+    <div id="light-projects-list" class="flex flex-vertical full-width">
       <h2>projects</h2>
+      <div class="horizontal-line line-dark"></div>
+      <div id="light-projects-list-list">
+        <div class="list-project pointer no-select" ng-repeat="project in projects track by $index" ng-click="selectProject($index)">
+          <div ng-show="project.selected" class="project-selected fa fa-check"></div>
+          <span>{{project.title}}</span>
+          <div ng-show="project.status == 'passing'" class="project-status passing"></div>
+          <div ng-show="project.status == 'failing'" class="project-status failing"></div>
+          <div ng-show="project.status == 'disabled'" class="project-status disabled"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

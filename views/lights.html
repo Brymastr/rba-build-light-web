@@ -10,8 +10,6 @@
   <div id="light-list" class="flex flex-center dark-background half-page">
     <div id="light-list-form" class="flex flex-vertical">
       <h2>lights list</h2>
-      <!--<button class="btn-light" ng-click="fetchList()">refresh</button>      -->
-      <!--<select ng-model="lightsList" ng-options="light as light.name for light in lights track by light._id"></select>-->
       <div>
         <div class="list-light pointer" ng-repeat="light in lights" ng-show="light.name" ng-click="goto(light._id)">
           <span>{{light.name}}</span>

@@ -28,8 +28,7 @@ app.controller('LightsController', function($scope, $http, $timeout, $location) 
     };
     $http.post(url, data, null).then(
       function(response) {
-        console.log('new light created');
-        $scope.goto(response._id);
+        $scope.goto(response.data._id);
       },
       function(response) {
         console.log('error');

@@ -57,7 +57,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
     $http.get(url + '/projects/', null).then(
       function(response) {
         for(p in response.data)
-          if($scope.light.projects.indexOf(response.data[p]._id) > -1)
+          if($scope.light.projects != null && $scope.light.projects.indexOf(response.data[p]._id) > -1)
             response.data[p].selected = true;
         $scope.projects = response.data;
       },

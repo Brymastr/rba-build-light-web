@@ -11,6 +11,22 @@ body {
   overflow: hidden;
 }
 
+#go-home {
+  position: absolute;
+  top: 15px;
+  font-size: 3vw;
+  padding: 10px;
+  color: $dark;
+  display: block;
+  text-decoration: none;
+  &.abs-left {
+    left: 20px;
+  }
+  &.abs-right {
+    right: 20px;
+  }
+}
+
 h1 {
   font-size: 5vw;
 }

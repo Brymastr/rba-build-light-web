@@ -1,5 +1,5 @@
-app.controller('SingleLightController', function($scope, $routeParams, $http, $timeout, $location) {
-  const url = 'http://localhost:9001/api';
+app.controller('SingleLightController', function($scope, $routeParams, $http, $timeout, $location, config) {
+  const url = config.url + ':' + config.port + '/api';
 
   $('.half-page').css('width', '0%');
   $('#light-projects').css('width', '100%');

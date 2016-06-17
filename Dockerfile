@@ -11,7 +11,7 @@ RUN     bower i --allow-root
 RUN     apt-get update
 RUN     apt-get -y install ruby-full
 RUN     gem install sass
-RUN     sass styles/main.scss
+RUN     sass styles/main.scss styles/main.css
 
 # Run application
 EXPOSE  80

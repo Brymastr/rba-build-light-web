@@ -12,9 +12,19 @@ app.controller('SingleLightController', function($scope, $routeParams, $http) {
   }
 
   $scope.updateLight = function() {
+
+    var projectsToSave = [];
+    for(p in $scope.projects) {
+      if($scope.projects[p].selected) {
+        projectsToSave.push($scope.projects[p]._id);
+      }
+    }
+    console.log(projectsToSave);
+
     var data = {
       name: $scope.light.name,
-      ip: $scope.light.ip
+      ip: $scope.light.ip,
+      projects: projectsToSave
     }
     $http.patch(url + '/lights/' + $routeParams.id, data, null).then(
       function(response) {
@@ -30,15 +40,17 @@ app.controller('SingleLightController', function($scope, $routeParams, $http) {
     $scope.projects = [];
     $http.get(url + '/projects/', null).then(
       function(response) {
+        for(p in response.data)
+          if($scope.light.projects.indexOf(response.data[p]._id) > -1)
+            response.data[p].selected = true;
         $scope.projects = response.data;
-        console.log($scope.projects);
       },
       function(response) {
         console.log('error');
       }
     );
   }
-  $scope.fetchProjects();
+  
 
   $scope.fetchLight = function() {
     $scope.light = null;
@@ -46,6 +58,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http) {
       function(response) {
         $scope.light = response.data;
         console.log($scope.light);
+        $scope.fetchProjects();
       },
       function(response) {
         console.log('error');

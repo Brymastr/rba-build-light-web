@@ -17,7 +17,10 @@ h1 {
 
 h2 {
   font-size: 4vw;
-  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 3vw;
 }
 
 .dark-background {
@@ -79,7 +82,7 @@ h2 {
   }
 }
 
-#new-light-form * {
+#new-light-form *, #light-list-form *, #light-details-form * {
   margin: 20px 0;
   text-align: center;
 }
@@ -102,6 +105,7 @@ button {
   border: 2px solid;
   font-size: 15pt;
   cursor: pointer;
+  padding: 5px;
 
   &.btn-dark {
     border-color: $dark !important;
@@ -111,4 +115,19 @@ button {
     border-color: $light !important;
     color: $light !important;
   }
+}
+
+#light-list-form {
+  min-width: 50%;
+
+  > div {
+    max-height: 75%;
+    overflow-y: auto;
+
+    .list-light {
+      border: $light solid 2px;
+      padding: 5px;
+      font-size: 15pt;
+    }
+  } 
 }

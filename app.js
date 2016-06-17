@@ -12,5 +12,9 @@ app.config(function($routeProvider) {
     .when('/projects', {
       templateUrl: 'views/projects.html',
       controller: 'ProjectsController'
+    })
+    .when('/lights/:id', {
+      templateUrl: 'views/single-light.html',
+      controller: 'SingleLightController'
     });
 });

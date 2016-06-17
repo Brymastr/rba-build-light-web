@@ -1,4 +1,4 @@
-app.controller('SingleLightController', function($scope, $routeParams, $http, $timeout) {
+app.controller('SingleLightController', function($scope, $routeParams, $http, $timeout, $location) {
   const url = 'http://localhost:9001/api';
 
   $('.half-page').css('width', '0%');
@@ -16,7 +16,6 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
   };
 
   $scope.updateLight = function() {
-
     var projectsToSave = [];
     for(p in $scope.projects) {
       if($scope.projects[p].selected) {
@@ -34,10 +33,23 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
       function(response) {
         console.log('light updated');
       },
-      function(response) {
+      function(err) {
         console.log('error');
       }
     );
+  };
+
+  $scope.deleteLight = function() {
+    $http.delete(url + '/lights/' + $routeParams.id, null).then(
+      function(response) {
+        $timeout(function() {
+          $location.path('/lights');
+        }, 500);
+      },
+      function(err) {
+
+      }
+    )
   };
 
   $scope.fetchProjects = function() {

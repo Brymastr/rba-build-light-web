@@ -17,7 +17,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
 
   $scope.updateLight = function() {
     var projectsToSave = [];
-    for(p in $scope.projects) {
+    for(var p in $scope.projects) {
       if($scope.projects[p].selected) {
         projectsToSave.push($scope.projects[p]._id);
       }
@@ -57,7 +57,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
     $scope.projects = [];
     $http.get(url + '/projects/', null).then(
       function(response) {
-        for(p in response.data)
+        for(var p in response.data)
           if($scope.light.projects != null && $scope.light.projects.indexOf(response.data[p]._id) > -1)
             response.data[p].selected = true;
         $scope.projects = response.data;
@@ -69,6 +69,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
   };
 
   $scope.notifyLight = function() {
+    console.log(url + '/lights/' + $routeParams.id + '/notify');
     $http.post(url + '/lights/' + $routeParams.id + '/notify', null).then(
       function(response) {
         console.log('notify light ' + $routeParams.id + ' of all subscribed projects');
@@ -77,7 +78,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
         console.log('error');
       }
     );
-  }
+  };
   
 
   $scope.fetchLight = function() {

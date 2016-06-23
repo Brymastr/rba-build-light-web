@@ -32,6 +32,7 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
     $http.patch(url + '/lights/' + $routeParams.id, data, null).then(
       function(response) {
         console.log('light updated');
+        $scope.notifyLight();
       },
       function(err) {
         console.log('error');
@@ -66,6 +67,17 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
       }
     );
   };
+
+  $scope.notifyLight = function() {
+    $http.post(url + '/lights/' + $routeParams.id + '/notify', null).then(
+      function(response) {
+        console.log('notify light ' + $routeParams.id + ' of all subscribed projects');
+      },
+      function(response) {
+        console.log('error');
+      }
+    );
+  }
   
 
   $scope.fetchLight = function() {

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DorsayDevelopment/rba-build-light-web#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "gulp": "^3.9.1"
   }
 }

@@ -20,9 +20,3 @@ app.config(function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 });
-
-app.constant('config', {
-  'url': 'http://10.2.69.28',
-  // 'url': 'http://localhost',
-  'port': '9001'
-});

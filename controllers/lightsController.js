@@ -1,6 +1,6 @@
 app.controller('LightsController', function($scope, $http, $timeout, $location, config) {
   $scope.lights = "Lights controller";
-  const url = config.url + ':' + config.port + '/api/lights';
+  const url = config.apiUrl + ':' + config.apiPort + '/api/lights';
 
   $('.half-page').css('width', '0%');
   $('#light-list').css('width', '100%');

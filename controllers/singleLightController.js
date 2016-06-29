@@ -1,5 +1,5 @@
 app.controller('SingleLightController', function($scope, $routeParams, $http, $timeout, $location, config) {
-  const url = config.url + ':' + config.port + '/api';
+  const url = config.apiUrl + ':' + config.apiPort + '/api';
 
   $('.half-page').css('width', '0%');
   $('#light-projects').css('width', '100%');
@@ -52,6 +52,17 @@ app.controller('SingleLightController', function($scope, $routeParams, $http, $t
       }
     )
   };
+
+  $scope.changeColor = function(color) {
+    $http.get('http://' + $scope.light.ip + '/api/manual/changeColor/' + color).then(
+      function(response) {
+        console.log('light manually set to ' + color);
+      },
+      function(response) {
+        console.log(response);
+      }
+    )
+  }
 
   $scope.fetchProjects = function() {
     $scope.projects = [];

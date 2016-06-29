@@ -1,4 +1,4 @@
-app.controller('HomeController', function($scope, $location, $timeout) {
+app.controller('HomeController', function($scope, $location, $timeout, $window) {
   $scope.home = "Home controller";
 
   $scope.goto = function(path) {
@@ -8,5 +8,9 @@ app.controller('HomeController', function($scope, $location, $timeout) {
       console.log(path);
       $location.path(path);
     }, 500);
-  }
+  };
+
+  $scope.gotoExternal = function(url) {
+        $window.location.href = url;
+    };
 });

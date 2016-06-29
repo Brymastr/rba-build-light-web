@@ -66,7 +66,31 @@ h3 {
   .flex-vertical {
     flex-direction: column;
   }
+  .flex-horizontal {
+    flex-direction: row;
+  }
 }
+
+.btn-red {
+  color: red;
+  border-color: red;
+}
+
+.btn-green {
+  color: green;
+  border-color: green;
+}
+
+.btn-yellow {
+  color: yellow;
+  border-color: yellow;
+}
+
+.manual-color > button {
+  margin: 0 5px;
+  flex-grow: 1;
+}
+
 
 .pointer {
   cursor: pointer;  
